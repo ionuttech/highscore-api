@@ -12,6 +12,12 @@ module.exports.getScores = (req, res, next) => {
 
 module.exports.saveScore = (req, res, next) => {
 	console.log(req.body)
+	if (req.body.username.length > 50) {
+		res.status(400, 'Username is too long')
+	}
+	if (!req.body.score > 1000) {
+		res.status(400, 'Score is too high')
+	}
 	if (!req.body.username) {
 		res.status(400, 'Username was not defined')
 	}
