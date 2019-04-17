@@ -6,7 +6,7 @@ module.exports.getScores = (req, res, next) => {
 	Highscore.find().then(scores => {
 		if (scores) {
 			let sortedScores = scores.sort(compare);
-			res.json(sortedScores.slice(0,15))
+			res.json(sortedScores)
 		}
 	})
 }
