@@ -5,7 +5,8 @@ const Highscore = mongoose.model('Highscore')
 module.exports.getScores = (req, res, next) => {
 	Highscore.find().then(scores => {
 		if (scores) {
-			res.json(scores.slice(0,15))
+			let sortedScores = scores.sort(compare);
+			res.json(sortedScores.slice(0,15))
 		}
 	})
 }
@@ -34,3 +35,13 @@ module.exports.saveScore = (req, res, next) => {
 		}
 	})
 }
+
+function compare(a,b) {
+  if (a.score < b.score)
+    return -1;
+  if (a.score > b.score)
+    return 1;
+  return 0;
+}
+
+
