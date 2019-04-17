@@ -17,7 +17,7 @@ module.exports.saveScore = (req, res, next) => {
 		res.status(400, 'Username is too long')
 		return;
 	}
-	if (!req.body.score > 999) {
+	if (req.body.score > 999) {
 		res.status(400, 'Score is too high')
 		return;
 	}
