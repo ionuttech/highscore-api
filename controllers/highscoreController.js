@@ -5,7 +5,7 @@ const Highscore = mongoose.model('Highscore')
 module.exports.getScores = (req, res, next) => {
 	Highscore.find().then(scores => {
 		if (scores) {
-			res.json(scores)
+			res.json(scores.slice(0,15))
 		}
 	})
 }
