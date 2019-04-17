@@ -13,7 +13,7 @@ module.exports.getScores = (req, res, next) => {
 
 module.exports.saveScore = (req, res, next) => {
 	console.log(req.body)
-	if (req.body.username.length > 6) {
+	if (req.body.username.length > 8) {
 		res.status(400, 'Username is too long')
 		return;
 	}
